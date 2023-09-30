@@ -40,6 +40,9 @@ def app():
         elif opcion == 5: 
             eliminar_contacto()
             preguntar = False            
+        elif opcion ==6:
+            print('Opcion Salir del programa, adios :)')
+            exit()
         else:
             print('Opcion no valida, vuelve a intentarlo')
 
@@ -52,12 +55,13 @@ def mostrar_menu(): #Funcion para elegir opcion del menu Desde aqui la creamos
     print('(3) Ver contactos')
     print('(4) Buscar contacto')
     print('(5) Eliminar contacto')
+    print('(6) Salir del programa')
 
 #Creamos funcion para agregar contacto
 def agregar_contacto():
     print('**Opcion: Agregar contacto**')
     print('Escribe los datos para agregar un nuevo contacto')
-    nombre_contacto = input('Nombre del contacto: \r\n')
+    nombre_contacto = input('Nombre del contacto: \r\n').title()
 
     #Revisamos si el contacto ya existie
     existe = existe_contacto(nombre_contacto)
@@ -82,6 +86,7 @@ def agregar_contacto():
 
             #Muestra un mensaje de exito
             print('\r\n Registro exitoso \r\n')
+            app()
 
     else: 
         print('Este contacto ya existe. \r\n')
@@ -111,7 +116,7 @@ def mostrar_contactos():
 #Funcion buscar contacto
 def buscar_contacto():
     print('Opcion buscar contacto')
-    nombre = input('Seleccione el contacto que desea buscar')
+    nombre = input('Seleccione el contacto que desea buscar').title()
    
    #Valida de que el archvivo exista
     try: 
@@ -131,7 +136,7 @@ def buscar_contacto():
 #Funcion eliminar contacto
 def eliminar_contacto():
     print('Opcion eliminar contacto \r\n')
-    nombre = input('Cual es el contacto que quieres eliminar?')
+    nombre = input('Cual es el contacto que quieres eliminar?').title()
 
     try:
         os.remove(CARPETA + nombre + EXTENSION) #Esto borra el archivo
